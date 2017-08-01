@@ -1,0 +1,19 @@
+{
+  "name": "sportdec-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/williansabiao/sportdec-test.git"
+  },
+  "author": "Willian R Sabião",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/williansabiao/sportdec-test/issues"
+  },
+  "homepage": "https://gitlab.com/williansabiao/sportdec-test#README"
+}
