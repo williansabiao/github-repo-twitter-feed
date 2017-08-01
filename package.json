@@ -4,16 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/williansabiao/sportdec-test.git"
-  },
+  "repository": "git+ssh://git@gitlab.com/williansabiao/sportdec-test.git",
   "author": "Willian R Sabião",
   "license": "ISC",
   "bugs": {
     "url": "https://gitlab.com/williansabiao/sportdec-test/issues"
   },
-  "homepage": "https://gitlab.com/williansabiao/sportdec-test#README"
+  "homepage": "https://gitlab.com/williansabiao/sportdec-test#README",
+  "dependencies": {
+    "chai": "^4.1.0",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^4.3.1",
+    "mocha": "^3.5.0"
+  }
 }
