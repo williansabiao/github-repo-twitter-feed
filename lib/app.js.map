@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.js"],"names":["module","exports"],"mappings":";;AAAA;;;;;;AAEAA,OAAOC,OAAP,GAAiB;AAAA,SAAM,MAAN;AAAA,CAAjB","file":"app.js","sourcesContent":["import request from 'request';\n\nmodule.exports = () => 'test';"]}

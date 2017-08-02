@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "babel src -d lib",
+    "start": "gulp",
     "test": "gulp"
   },
   "repository": "git+ssh://git@gitlab.com/williansabiao/sportdec-test.git",
@@ -14,9 +16,17 @@
   },
   "homepage": "https://gitlab.com/williansabiao/sportdec-test#README",
   "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "bluebird": "^3.5.0",
     "chai": "^4.1.0",
+    "github": "^9.2.0",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
     "gulp-mocha": "^4.3.1",
-    "mocha": "^3.5.0"
+    "gulp-nodemon": "^2.2.1",
+    "gulp-sourcemaps": "^2.6.0",
+    "mocha": "^3.5.0",
+    "request": "^2.81.0"
   }
 }
