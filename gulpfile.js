@@ -8,17 +8,17 @@ const babel = require('gulp-babel');
 const nodemon = require('gulp-nodemon');
 
 gulp.task('default', ['nodemonServer'], () => {
-  gulp.watch(['src/**', 'test/**'], ['mocha']);
+  gulp.watch(['src/**/*', 'test/**/*'], ['mocha']);
 });
 
 gulp.task('mocha', () => {
-  return gulp.src(['test/*.js'], { read: false })
-    .pipe(mocha({ reporter: 'nyan', compilers: 'js:babel-core/register' }))
+  return gulp.src(['test/**/*.js'], { read: false })
+    .pipe(mocha({ reporter: 'list', compilers: 'js:babel-core/register' }))
     .on('error', gutil.log);
 });
 
 gulp.task('transpileNode', () => {
-  return gulp.src('src/app.js')
+  return gulp.src('src/**/*.js')
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(sourcemaps.write('.'))

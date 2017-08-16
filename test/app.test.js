@@ -1,4 +1,3 @@
-
 import { expect } from 'chai';
 import assert from 'assert';
 import app from '../src/app';
