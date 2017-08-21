@@ -1,3 +1,5 @@
-import request from 'request';
+import { writeFile } from './modules/output'
 
-module.exports = () => 'test';
+module.exports = (() => {
+  writeFile('output.json', { test: 'true' });
+})();

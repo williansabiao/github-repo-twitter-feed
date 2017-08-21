@@ -1,22 +1,25 @@
-import github from 'github';
-import bluebird from 'bluebird';
+import Twitter from 'twitter';
 
-const githubApi = () => {
-  const githubConnector = new github({
-    protocol: 'https',
-    host: 'api.github.com', // should be api.github.com for GitHub
-    headers: {
-      'user-agent': 'My-Cool-GitHub-App' // GitHub is happy with a unique user agent
-    },
-    Promise: bluebird,
-    timeout: 5000
+const twitterApi = () => {
+  const twitterClient = new Twitter({
+    consumer_key: 'BfPJopqPan2gPpFMw2RiHKyj6',
+    consumer_secret: 'kxzVHejRkYt8uc7s0IoTx3IKNZq97dd6RU2gE0XZm6PilnHclv',
+    access_token_key: '806558553611923456-hHmCTFY0jioPu1u4qorvnrEpysdV4cE',
+    access_token_secret: '9OF80g0ErKl9cuJjsEfeJgon7LvM0WBNjmrV66OZEWnVb',
   });
 
-  const getRepo = (q = 'Football', sort = 'stars') => githubConnector.search.repos({ q, sort })
+  const search = (q = 'Football') => {
+    return new Promise((resolve, reject) => {
+      twitterClient.get('search/tweets', { q }, (err, tweets, response) => {
+        if ( err ) reject(err);
+        resolve(tweets, response);
+      });
+    });
+  }
 
   return {
-    getRepo
+    search
   };
 };
 
-module.exports = githubApi();
+module.exports = twitterApi();

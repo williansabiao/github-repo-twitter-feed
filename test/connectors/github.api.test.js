@@ -14,12 +14,12 @@ nock('https://api.github.com')
   .get('/')
   .reply(200, 'normalAnswer');
 
-describe('Testing github.api connector', () => {
+describe('github.api connector', () => {
   it('should githubApi returns a object', () => {
     expect(githubApi).to.be.a('Object');
   });
 
-  describe('Testing getRepo() function', () => {
+  describe('it getRepo() function', () => {
     const defaultParams = { sort: 'stars', q: 'Football' };
 
     it('sould getRepo() returns a promise', () => {
@@ -30,7 +30,7 @@ describe('Testing github.api connector', () => {
 
     it('should getRepo() has the correct default params', () => {
       nock('https://api.github.com')
-        .get('/search/repositories')
+        .get(/search.*.repositories/)
         .query(defaultParams)
         .reply(200, 'ok');
 
@@ -44,7 +44,7 @@ describe('Testing github.api connector', () => {
     it('should getRepo() with q param get the correct result', () => {
       const sport = 'Volleyball';
       nock('https://api.github.com')
-        .get('/search/repositories')
+        .get(/search.*.repositories/)
         .query({q: sport, sort: defaultParams.sort})
         .reply(200, 'ok');
 
@@ -59,7 +59,7 @@ describe('Testing github.api connector', () => {
     it('should getRepo() with sort param get the correct result', () => {
       const sort = 'forks';
       nock('https://api.github.com')
-        .get('/search/repositories')
+        .get(/search.*.repositories/)
         .query({sort: sort, q: defaultParams.q})
         .reply(200, 'ok');
 

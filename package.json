@@ -32,6 +32,7 @@
     "nock": "^9.0.14",
     "request": "^2.81.0",
     "sinon": "^3.0.0",
-    "sinon-as-promised": "^4.0.3"
+    "sinon-as-promised": "^4.0.3",
+    "twitter": "^1.7.1"
   }
 }
