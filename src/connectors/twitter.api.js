@@ -1,4 +1,5 @@
 import Twitter from 'twitter';
+import config from './../config/';
 
 const twitterApi = () => {
   const twitterClient = new Twitter({

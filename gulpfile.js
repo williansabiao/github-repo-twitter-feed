@@ -18,7 +18,7 @@ gulp.task('mocha', () => {
 });
 
 gulp.task('transpileNode', () => {
-  return gulp.src('src/**/*.js')
+  return gulp.src(['src/**/*.js'])
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(sourcemaps.write('.'))
