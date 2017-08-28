@@ -11,7 +11,7 @@ To run, copy **/src/config/config-template.json** *->* **/src/config/config-deve
 
 Change the twitter keys of according your keys.
 
-*Always that you change the config file, you need run **npm run build** to copy the new file to app folder*
+*Always that you change the config file, you need run ```npm run build``` to copy the new file to app folder*
 
 To run, execute this commands on root folder:
 ```
