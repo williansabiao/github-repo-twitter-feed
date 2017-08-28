@@ -8,6 +8,11 @@ const config = () => {
       consumer_secret: process.env.twitter_consumer_key,
       access_token_key: process.env.twitter_consumer_key,
       access_token_secret: process.env.twitter_consumer_key,
+    },
+    app: {
+      search: 'football',
+      sort: 'stars',
+      filter_repository_object_name: 'name'
     }
   };
 

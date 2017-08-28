@@ -1,3 +1,4 @@
+import config from './config/';
 import { writeFile } from './modules/output';
 import githubApi from './connectors/github.api';
 import twitterApi from './connectors/twitter.api';
@@ -9,7 +10,7 @@ module.exports = (() => {
   let outputResult = {};
 
   githubApi
-    .getRepo('football', 'stars', 'name', 10)
+    .getRepo(config.app.search, config.app.sort, config.app.filter_repository_object_name, 10)
     .then((repoList) => {
       console.log('Repositories caught.');
       console.log('Getting tweets...');
