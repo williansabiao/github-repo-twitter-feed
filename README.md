@@ -26,4 +26,4 @@ To run the tests, run:
     NODE_ENV=development npm run test
 ```
 
-The coverage of tests aren't 100%.
+The coverage of tests isn't 100%.
