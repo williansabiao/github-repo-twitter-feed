@@ -12,7 +12,9 @@ const expect = chai.expect;
 nock('https://api.github.com')
   .filteringPath(() => '/')
   .get('/')
-  .reply(200, 'normalAnswer');
+  .reply(200, {items: ['defaultAnswer'] });
+
+const containAllParams = (params, paramsToFind) => !paramsToFind.some((param) => JSON.stringify(params).indexOf(param) === -1)
 
 describe('github.api connector', () => {
   it('should githubApi returns a object', () => {
@@ -20,7 +22,7 @@ describe('github.api connector', () => {
   });
 
   describe('it getRepo() function', () => {
-    const defaultParams = { sort: 'stars', q: 'Football' };
+    const defaultParams = ['stars', 'football'];
 
     it('sould getRepo() returns a promise', () => {
       let getRepoPromise = githubApi.getRepo();
@@ -31,13 +33,13 @@ describe('github.api connector', () => {
     it('should getRepo() has the correct default params', () => {
       nock('https://api.github.com')
         .get(/search.*.repositories/)
-        .query(defaultParams)
-        .reply(200, 'ok');
+        .query(queryObj => containAllParams(queryObj, defaultParams))
+        .reply(200, {items: ['ok'] });
 
       let getRepoPromise = githubApi.getRepo();
       return getRepoPromise.then((response) => {
-        expect(response).to.be.a('Object');
-        expect(response.data).to.be.equal('ok');
+        expect(response).to.be.a('Array');
+        expect(response[0]).to.be.equal('ok');
       });
     });
 
@@ -45,14 +47,14 @@ describe('github.api connector', () => {
       const sport = 'Volleyball';
       nock('https://api.github.com')
         .get(/search.*.repositories/)
-        .query({q: sport, sort: defaultParams.sort})
-        .reply(200, 'ok');
+        .query(queryObj => containAllParams(queryObj, [sport]))
+        .reply(200, {items: ['ok'] });
 
       let getRepoPromise = githubApi.getRepo(sport);
 
       return getRepoPromise.then((response) => {
-        expect(response).to.be.a('Object');
-        expect(response.data).to.be.equal('ok');
+        expect(response).to.be.a('Array');
+        expect(response[0]).to.be.equal('ok');
       });
     });
 
@@ -60,14 +62,14 @@ describe('github.api connector', () => {
       const sort = 'forks';
       nock('https://api.github.com')
         .get(/search.*.repositories/)
-        .query({sort: sort, q: defaultParams.q})
-        .reply(200, 'ok');
+        .query(queryObj => containAllParams(queryObj, [sort]))
+        .reply(200, {items: ['ok'] });
 
       let getRepoPromise = githubApi.getRepo(undefined, 'forks');
 
       return getRepoPromise.then((response) => {
-        expect(response).to.be.a('Object');
-        expect(response.data).to.be.equal('ok');
+        expect(response).to.be.a('Array');
+        expect(response[0]).to.be.equal('ok');
       });
     });
   })
