@@ -8,11 +8,11 @@ module.exports = (() => {
 
   let outputResult = {};
 
-  console.log(process.env.NODE_ENV)
   githubApi
     .getRepo('football', 'stars', 'name', 10)
     .then((repoList) => {
-      console.log('Repositories getted. \n Writting file...');
+      console.log('Repositories caught.');
+      console.log('Getting tweets...');
       let tweetPromises = [];
 
       repoList.forEach(repoName => tweetPromises.push(twitterApi.search(repoName)));
@@ -21,7 +21,9 @@ module.exports = (() => {
       return Promise.all(tweetPromises);
     })
     .then((tweets) => {
+      console.log('Tweets caught... \nWriting json file...');
       outputResult.tweetsByProject = helper.organizeTweets(tweets);
       writeFile('output.json', outputResult);
+      console.log('JSON file writted. Access /output.json to see the result.');
     });
 })();

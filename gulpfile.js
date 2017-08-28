@@ -1,5 +1,6 @@
 'use strict';
 
+const exec = require('child_process').exec;
 const gulp = require('gulp');
 const mocha = require('gulp-mocha');
 const gutil = require('gulp-util');
@@ -17,12 +18,16 @@ gulp.task('mocha', () => {
     .on('error', gutil.log);
 });
 
-gulp.task('transpileNode', () => {
+gulp.task('transpileNode', ['copy'], () => {
   return gulp.src(['src/**/*.js'])
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('lib'));
+});
+
+gulp.task('copy', () => {
+  return gulp.src(['src/**/*.json']).pipe(gulp.dest('lib/'));
 });
 
 gulp.task('nodemonServer', ['transpileNode'], () => {

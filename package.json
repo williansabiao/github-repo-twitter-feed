@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel src -d lib",
-    "start": "gulp",
-    "test": "gulp"
+    "build": "babel src -d lib && gulp copy",
+    "start": "node lib/app.js",
+    "start-dev": "gulp",
+    "test": "gulp transpileNode && gulp mocha"
   },
   "repository": "git+ssh://git@gitlab.com/williansabiao/sportdec-test.git",
   "author": "Willian R Sabião",

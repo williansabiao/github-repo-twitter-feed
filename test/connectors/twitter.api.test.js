@@ -39,7 +39,6 @@ describe('twitter.api connector', () => {
     const searchPromise = twitterApi.search(q);
 
     return searchPromise.then((response) => {
-      console.log(response)
       expect(response).to.be.a('Object');
       expect(response.status).to.be.equal('ok');
     });
