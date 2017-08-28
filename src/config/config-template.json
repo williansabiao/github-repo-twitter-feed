@@ -1,0 +1,13 @@
+{
+  "twitter": {
+    "consumer_key": "",
+    "consumer_secret": "",
+    "access_token_key": "",
+    "access_token_secret": ""
+  },
+  "app": {
+    "search": "football", 
+    "sort": "stars",
+    "filter_repository_object_name": "name"
+  }
+}

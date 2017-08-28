@@ -1,1 +1,4 @@
 node_modules/
+src/config/config-development.json
+lib/
+output.json

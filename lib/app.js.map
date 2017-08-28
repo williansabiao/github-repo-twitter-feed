@@ -1,1 +1,0 @@
-{"version":3,"sources":["app.js"],"names":["module","exports","test"],"mappings":";;AAAA;;AAEAA,OAAOC,OAAP,GAAkB,YAAM;AACtB,yBAAU,aAAV,EAAyB,EAAEC,MAAM,MAAR,EAAzB;AACD,CAFgB,EAAjB","file":"app.js","sourcesContent":["import { writeFile } from './modules/output'\n\nmodule.exports = (() => {\n  writeFile('output.json', { test: 'true' });\n})();"]}
